@@ -10,9 +10,14 @@ if __name__ == '__main__':
 
     # 데이터 수집(collection)
     for item in items:
-        collect.crawling(**item)
+        resultfile = collect.crawling(**item, fetch=False)
+        item['resultfile'] = resultfile
 
     # 데이터 분석(analyze)
+    for item in items:
+        data = analyze.json_to_str(item['resultfile'], 'message')
+        print(data)
+        # item['count_wordfreq'] = analyze.count_wordfreq(data)
 
     # 데이터 시각화(visualize)
 

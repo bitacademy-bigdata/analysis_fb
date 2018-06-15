@@ -31,7 +31,7 @@ def preprocess_post(post):
     post['created_time'] = kst.strftime('%Y-%m-%d %H:%M:%S')
 
 
-def crawling(pagename, since, until):
+def crawling(pagename, since, until, fetch=True):
     results = []
     filename = '%s/%s_%s_%s.json' % (
         RESULT_DIRECTORY,
@@ -39,20 +39,23 @@ def crawling(pagename, since, until):
         since,
         until)
 
-    for posts in api.fb_fetch_posts(pagename, since, until):
-        for post in posts:
-            preprocess_post(post)
+    if fetch:
+        for posts in api.fb_fetch_posts(pagename, since, until):
+            for post in posts:
+                preprocess_post(post)
 
-        results += posts
+            results += posts
 
-    # save results to file(저장/적재)
-    with open(filename, 'w', encoding='utf-8') as outfile:
-        json_string = json.dumps(
-            results,
-            indent=4,
-            sort_keys=True,
-            ensure_ascii=False)
-        outfile.write(json_string)
+        # save results to file(저장/적재)
+        with open(filename, 'w', encoding='utf-8') as outfile:
+            json_string = json.dumps(
+                results,
+                indent=4,
+                sort_keys=True,
+                ensure_ascii=False)
+            outfile.write(json_string)
+
+    return filename
 
 
 if os.path.exists(RESULT_DIRECTORY) is False:
