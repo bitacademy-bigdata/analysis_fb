@@ -1,0 +1,12 @@
+0. pygame 설치
+   pip install pygame
+
+   simplejson 설치
+   simplejson download
+   python setup.py install
+
+1. pytagcloud 설치
+   pip install pytagcloud
+
+2. pytagcloud 한글처리
+

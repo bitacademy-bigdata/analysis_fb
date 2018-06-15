@@ -1,5 +1,7 @@
 import json
 import re
+from konlpy.tag import Twitter
+from collections import Counter
 
 
 def json_to_str(filename, key):
@@ -18,3 +20,10 @@ def json_to_str(filename, key):
 
     return data
 
+
+def count_wordfreq(data):
+    twitter = Twitter()
+    nouns = twitter.nouns(data)
+
+    count = Counter(nouns)
+    return count
