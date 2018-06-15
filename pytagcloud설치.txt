@@ -9,4 +9,14 @@
    pip install pytagcloud
 
 2. pytagcloud 한글처리
+   1) python 설치 디렉토리/Lib/site-packages/pytagcloud/fonts
+      에 한글 폰트 복사(malgun.ttf)
+   2) python 설치 디렉토리/Lib/site-packages/pytagcloud/fonts/font.json 수정
 
+	{
+        "name": "Malgun",
+        "ttf": "malgun.ttf",
+        "web": "http://fonts.googleapis.com/css?family=Malgun"
+    }
+
+    추가
