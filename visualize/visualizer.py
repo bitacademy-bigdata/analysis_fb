@@ -25,11 +25,22 @@ def graph_bar(
     fig, subplots = plt.subplots(1, 1)
     subplots.bar(range(len(values)), values, align='center')
 
-
     #ticks
     if ticks is not None and isinstance(ticks, collections.Sequence):
         subplots.set_xticks(range(len(ticks)))
-        subplots.set_xticklabels(ticks)
+        subplots.set_xticklabels(ticks, rotation=80, fontsize='xx-small')
+
+    # title
+    if title is not None and isinstance(title, str):
+        subplots.set_title(title)
+
+    # xlabel
+    if xlabel is not None and isinstance(xlabel, str):
+        subplots.set_xlabel(xlabel)
+
+    # ylabel
+    if xlabel is not None and isinstance(ylabel, str):
+        subplots.set_ylabel(ylabel)
 
     # show grid
     subplots.grid(showgrid)
