@@ -25,5 +25,10 @@ if __name__ == '__main__':
 
         filename = "%s_%s_%s" % (item['pagename'], item['since'], item['until'])
         visualize.wordcloud(filename, count_m50)
-        # visualize.graph_bar()
+        visualize.graph_bar(
+            values=list(count_m50.values()),
+            ticks=list(count_m50.keys()),
+            showgrid=False,
+            filename=filename,
+            showgraph=False)
 
